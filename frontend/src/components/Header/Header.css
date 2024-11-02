@@ -1,0 +1,122 @@
+/* General Styles */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 29.5vw;
+    margin: 0px auto;
+    background: url('../../assets/img/bannerbackground.png') no-repeat;
+    background-size: cover;
+    /* Changed to cover for better scaling on smaller screens */
+    position: relative;
+    padding: 1rem;
+    /* Add padding for smaller screens */
+    text-align: center;
+    /* Center content on smaller screens */
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #7d2ae8, #5a1eb0, #7d2ae8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    /* Reduce size on smaller screens */
+}
+
+/* Search Button Container */
+.Searchbtn {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Searchbtn input {
+    background: rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    border: none;
+}
+
+.Searchbtn input:focus {
+    padding: 0.4rem;
+    border: 2px solid #7d2ae8;
+    outline: none;
+}
+
+.Searchbtn button {
+    height: 32.8px;
+    background-color: #7d2ae8;
+    padding: 0px 17px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    right: 0px;
+}
+
+.Searchbtn button:hover {
+    background-color: #9d0bef;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header {
+        height: 100%;
+        /* Adjust height for smaller screens */
+        background-size: cover;
+        padding: 1rem;
+        /* Additional padding for better layout */
+    }
+
+    .gradient-text {
+        font-size: 1.5rem;
+        /* Reduce font size */
+    }
+}
+
+
+@media (max-width: 480px) {
+    .gradient-text {
+        font-size: 1.2rem;
+        /* Smaller font size for mobile screens */
+    }
+
+    .Searchbtn {
+        width: 100%;
+        max-width: 400px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0.25rem;
+        border-radius: 50px;
+    }
+
+    .Searchbtn input {
+        background: rgb(255, 255, 255);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        border: none;
+        font-size: 16px;
+    }
+
+    .Searchbtn button {
+        height: 32.8px;
+        background-color: #7d2ae8;
+        padding: 0px 10px;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        margin-left: 0.25rem;
+        flex-shrink: 0;
+    }
+}
