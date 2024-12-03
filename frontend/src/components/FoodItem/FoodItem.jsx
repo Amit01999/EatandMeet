@@ -1,53 +1,38 @@
-/* eslint-disable react/prop-types */
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { assets } from '../../assets/assets';
 import './FoodItem.css';
 import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
+import ShimmerFoodItem from '../ShimmerFood/ShimmerFoodItem';
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItems, addToCart, removeFromCart, url } =
-    useContext(StoreContext);
-  const navagated = useNavigate();
+  const { url } = useContext(StoreContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
   const handelFoodDetails = () => {
-    console.log('Food drtails clicked');
-    navagated('/FoodDetailes/' + id);
+    console.log('Food details clicked');
+    navigate('/FoodDetailes/' + id);
   };
+
+  useEffect(() => {
+    const imageLoader = new Image();
+    imageLoader.src = url + '/images/' + image;
+    imageLoader.onload = () => setIsLoading(false);
+  }, [url, image]);
+
+  if (isLoading) {
+    return <ShimmerFoodItem></ShimmerFoodItem>;
+  }
+
   return (
-    <div
-      onClick={id => {
-        handelFoodDetails(id);
-      }}
-      className="food-item"
-    >
+    <div onClick={handelFoodDetails} className="food-item">
       <div className="food-item-img-container">
         <img
           className="food-item-image"
           src={url + '/images/' + image}
           alt=""
         />
-        {/* {!cartItems[id] ? (
-          <img
-            className="add"
-            onClick={() => addToCart(id)}
-            src={assets.add_icon_white}
-            alt=""
-          />
-        ) : (
-          <div className="food-item-counter">
-            <img
-              onClick={() => removeFromCart(id)}
-              src={assets.remove_icon_red}
-              alt=""
-            />
-            <p>{cartItems[id]}</p>
-            <img
-              onClick={() => addToCart(id)}
-              src={assets.add_icon_green}
-              alt=""
-            />
-          </div>
-        )} */}
       </div>
       <div className="food-item-info">
         <div className="food-item-name-rating">
